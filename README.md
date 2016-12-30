@@ -1,2 +1,2 @@
 # product-review-app
-Filter, search, check review web application
+Web application for filtering, searching and checking reviews.
