@@ -45,6 +45,7 @@ gulp.task('react', function() {
 
 //Only runs after react & minify is complete
 gulp.task('js-watch', ['react'], function(done) {
+    console.log("js changining!");
     browserSync.reload();
     done();
 });
