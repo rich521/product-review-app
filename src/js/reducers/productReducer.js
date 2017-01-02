@@ -2,7 +2,7 @@ export default function reducer(state = {
     fetching: false,
     fetched: false,
     error: null,
-    itemLimit: 15,
+    itemLimit: 25,
     productsAll: [],
     productsFiltered: [],
     searchProducts: []
@@ -31,7 +31,8 @@ export default function reducer(state = {
         },
         "PRODUCT_SEARCH": {
             ...state,
-            searchProducts: action.payload
+            searchProducts: action.payload,
+            itemLimit: 25
         },
         "CHANGE_LIMIT": {
             ...state,

@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import * as productActions from "../actions/productActions";
-
 import ArticleList from "../components/ArticleList";
 
 // Main data store for handling and processing
@@ -14,18 +13,28 @@ import ArticleList from "../components/ArticleList";
 })
 
 export default class ProductList extends React.Component {
+    constructor() {
+        super();
+        this.listener = this._handleScroll.bind(this);
+    }
     componentDidMount() {
-        document.addEventListener('scroll', this._handleScroll.bind(this));
+        window.addEventListener('scroll', this.listener);
     }
 
     componentWillUnmount() {
-        document.removeEventListener('scroll', this._handleScroll.bind(this));
+        window.removeEventListener('scroll', this.listener);
     }
 
     // Handle search input
     _onFilterChange(event) {
         const { dispatch, productsFiltered } = this.props;
         dispatch(productActions._onFilterChange(event, productsFiltered));
+    }
+
+    // If scroll doesnt work, for big screen sizes. Button will handle load content
+    _handleClick() {
+        const { dispatch, itemLimit } = this.props;
+        dispatch(productActions._onIncreaseLimit(itemLimit));
     }
 
     // Handle unlimited scroll
@@ -36,28 +45,44 @@ export default class ProductList extends React.Component {
         }
     }
 
+    _handleScrollTop() {
+        setTimeout(() => {
+            document.body.scrollTop = document.body.scrollTop - 150;
+            if (document.body.scrollTop == 0) return;
+            this._handleScrollTop();
+        }, 10);
+    }
+
     render() {
         const { searchProducts, itemLimit } = this.props;
+        const prodLen = searchProducts.length;
         const { searchInput } = this.refs;
 
-        let ProductList = <div>AJAX LOADING</div>;
-        if (!searchProducts.length && searchInput) {
-            if (searchInput.value) ProductList = <div>NO results</div>
+        let ProductList = <div>AJAX LOADING</div>,
+            ShowButton = <button onClick={this._handleClick.bind(this)} class="btn">Show More</button>;
+        if (!prodLen && searchInput) {
+            if (searchInput.value) {
+                ProductList = <div>NO results</div>
+                ShowButton = <div></div>
+            }
         }
 
-        if (searchProducts.length) {
-            ProductList = <ArticleList searchProducts={searchProducts} itemLimit={itemLimit}/>;
-        }
+        if (itemLimit > prodLen) ShowButton = <div></div>;
+        if (prodLen) ProductList = <ArticleList searchProducts={searchProducts} itemLimit={itemLimit}/>;
 
         // Render the main dashboard after data has been loaded
         return (
-            <div class="container">
-                <div class="form-group">
-                  <label class="control-label" for="inputLarge">Search Product</label>
-                  <input class="form-control input-lg" type="text" id="searchInput" ref="searchInput" onChange={this._onFilterChange.bind(this)} placeholder="What product would you like to search for?" />
+            <div class="list-container">
+                <div class="topNav">
+                    <h1>Review App</h1>
+                    <div class="form-group">
+                        <input class="input" type="text" id="searchInput" ref="searchInput" onChange={this._onFilterChange.bind(this)} placeholder="What product would you like to search for?" />
+                    </div>
                 </div>
-                <h2>Product list goes here</h2>
+                <div class="anchor-list">showing { (itemLimit > prodLen) ? prodLen : itemLimit } of {prodLen}</div>
+                <div class="scroll-btn" onClick={this._handleScrollTop.bind(this)}><span/></div>
                 { ProductList }
+                <div class="middle">{ ShowButton }</div>
             </div>
         );
     }

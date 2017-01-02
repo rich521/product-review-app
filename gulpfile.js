@@ -8,6 +8,7 @@ var autoprefixer = require('gulp-autoprefixer'),
     sass = require('gulp-sass'),
     webpack = require('webpack-stream');
 
+
 // Paths
 var sassPath = 'src/sass/**/*.scss',
     cssPath = 'dist/css/';
@@ -21,7 +22,11 @@ gulp.task('default', function() {
         server: {
             baseDir: './dist',
             middleware: [
-                history({ verbose: true })            ],
+                history({
+                    verbose: true,
+                    disableDotRule: false
+                })
+            ],
         }
     });
     gulp.watch('./src/js/**/*.js', ['js-watch']);

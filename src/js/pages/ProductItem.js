@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router";
 import { connect } from "react-redux";
 import { fetchItem } from "../actions/productActions";
+import Rating from "../components/Rating";
 
 @connect((store) => {
     return {
@@ -12,26 +13,32 @@ import { fetchItem } from "../actions/productActions";
 export default class ProductItem extends React.Component {
     render() {
         const { params, productsAll } = this.props;
+        // Fixes the dot bug
+        let name = params.id.replace(/-/g, ".");
         if (!productsAll.length) return <div>AJAX LOADING</div>;
 
         return (
-            <div>
-	            <h1>ProductItem</h1>
-	            <h2><Link to="/">Back</Link></h2>
+            <div class="item-container">
+                <div class="topNav">
+                	<Link to="/" class="btn">← Back</Link>
+	                <h2>"{name}" Reviews</h2>
+            	</div>
 	            {productsAll.map((item, i) => {
-	            	if (params.id === item.productName) {
+	            	if (name === item.productName) {
 	                return (
-	                    <article key={i}>
-	                    	<ul>
-	                    		<li>{item.id}</li>
-	                    		<li>{item.name}</li>
-	                    		<li>{item.email}</li>
-	                    		<li>{item.hasBought}</li>
-	                    		<li>{item.rating}/5</li>
-	                    		<li>{item.timestamp}</li>
-	                    		<li>{item.title}</li>
-	                    		<li>{item.comments}</li>
-	                    	</ul>
+	                    <article key={i} class="article">
+		                    <div class="side-bar">
+		                    	<div>#{item.id}</div>
+		                    	<h2>{item.name.charAt(0).toUpperCase() + item.name.slice(1)}</h2>
+		                    	<a href={"mailto:" + item.email}>{item.email}</a>
+		                    	<div>Items Bought: {item.hasBought}</div>
+		                    </div>
+	                    	<div class="content">
+	                    		<h3>{item.title}</h3>
+	                    		<Rating rating={item.rating} />
+	                    		<div>{item.timestamp}</div>
+	                    		<p>{item.comments}</p>
+	                    	</div>
 	                    </article>
 	                );
 	            }})}
