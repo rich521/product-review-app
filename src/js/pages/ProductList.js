@@ -58,11 +58,11 @@ export default class ProductList extends React.Component {
         const prodLen = searchProducts.length;
         const { searchInput } = this.refs;
 
-        let ProductList = <div>AJAX LOADING</div>,
+        let ProductList = <img class="gif" src="/img/ajax-loader.gif" alt="Loading!"/>,
             ShowButton = <button onClick={this._handleClick.bind(this)} class="btn">Show More</button>;
         if (!prodLen && searchInput) {
             if (searchInput.value) {
-                ProductList = <div>NO results</div>
+                ProductList = <div class="no-result">No results found matching "{searchInput.value}"</div>
                 ShowButton = <div></div>
             }
         }
@@ -76,7 +76,7 @@ export default class ProductList extends React.Component {
                 <div class="topNav">
                     <h1>Review App</h1>
                     <div class="form-group">
-                        <input class="input" type="text" id="searchInput" ref="searchInput" onChange={this._onFilterChange.bind(this)} placeholder="What product would you like to search for?" />
+                        <input class="input" type="text" id="searchInput" ref="searchInput" onChange={this._onFilterChange.bind(this)} placeholder="What product would you like to search for?" maxLength="25"/>
                     </div>
                 </div>
                 <div class="anchor-list">showing { (itemLimit > prodLen) ? prodLen : itemLimit } of {prodLen}</div>

@@ -49,13 +49,20 @@ h3 {
 }
 
 .review-article {
-    padding: 15px 20px;
+    padding: 0 20px 10px;
     border-radius: 5px;
 }
 
 .side-bar {
     width: 20%;
     @extend .review-article;
+    div {
+        font-style: italic;
+        margin-bottom: 5px;
+        a {
+            text-decoration: none;
+        }
+    }
 }
 
 .content {
@@ -117,7 +124,7 @@ h3 {
         float: left;
         color: $second-color;
         background-color: white;
-        margin: 10px;
+        margin: 10px 25px 10px;
     }
     .form-group {
         padding: 15px;
@@ -238,13 +245,35 @@ h3 {
     font-size: 18px;
 }
 
-@media screen and (max-width: 549px) {
-    .container {
+.time {
+    font-style: italic;
+    color: #bbbbbb;
+}
+
+.gif {
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    margin: auto;
+    top: 50%;
+    left: 50%;
+    margin-left: -50px;
+    margin-top: -50px; 
+}
+
+.no-result {
+    position: absolute;
+    margin: auto;
+    top: 20%;
+    left: 10%;
+    text-align: center;
+    font-size: 24px;
+}
+
+@media screen and (max-width: 550px) {
+    .list-container {
         padding-top: 125px;
     }
-    // .topNav {
-    //     text-align: center;
-    // }
     .input {
         width: 100%;
     }
@@ -258,6 +287,13 @@ h3 {
     }
     .side-bar {
         width: 100%;
+        h3 {
+            margin-right: 10px;
+        }
+        h2,
+        h3 {
+            display: inline-block;
+        }
     }
     .content {
         width: 100%;
