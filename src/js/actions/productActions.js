@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const productURL = "./data/products.json";
+const productURL = "https://rawgit.com/richardstrutt/product-review-app/master/dist/data/products.json";
 
 // Fetch the products data
 export function fetchProducts() {
@@ -40,18 +40,10 @@ export function _onFilterChange(event, products) {
     }
 }
 
-// Fetch the item data
-export function fetchItem(id, list) {
-    console.log(id, list);
-    const array = [];
-    for (let i = list.length - 1; i >= 0; i--) {
-        if (list[i].id === id) array.push(list[i]);
-    }
-
-    console.log(array);
-
+export function _onIncreaseLimit(limit) {
+    let incremented = limit += 5;
     return (dispatch) => {
-        dispatch({ type: "PRODUCT_REVIEWS", payload: array });
+        dispatch({ type: "CHANGE_LIMIT", payload: incremented });
     }
 }
 

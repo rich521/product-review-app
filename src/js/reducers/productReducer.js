@@ -2,10 +2,10 @@ export default function reducer(state = {
     fetching: false,
     fetched: false,
     error: null,
+    itemLimit: 15,
     productsAll: [],
     productsFiltered: [],
-    searchProducts:[],
-    productReviews: []
+    searchProducts: []
 }, action) {
     const cases = {
         "FETCHING_PRODUCTS": {
@@ -33,9 +33,9 @@ export default function reducer(state = {
             ...state,
             searchProducts: action.payload
         },
-        "PRODUCT_REVIEWS": {
+        "CHANGE_LIMIT": {
             ...state,
-            productReviews: action.payload
+            itemLimit: action.payload
         }
     };
 

@@ -1,15 +1,16 @@
 import React from "react";
 import { Link } from "react-router";
 
-export default (products) => {
-    const limitTo = 10;
+export default (props) => {
+    let limitTo = props.itemLimit;
+
     return (
         <div>
-            {products.searchProducts.map((item, i) => {
+            {props.searchProducts.map((item, i) => {
                 if (i < limitTo) {
                 return (
-                    <article key={item.id}>
-                        <h3><Link to={`/product/${item.id}`}>{item.productName}</Link></h3>
+                    <article key={i}>
+                        <h3><Link to={`/product/${item.productName}`}>{item.productName}</Link></h3>
                         <p>{item.rating}</p>
                     </article>
                 );
