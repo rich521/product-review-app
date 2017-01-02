@@ -2,6 +2,10 @@
 Web application for filtering, searching and checking reviews.
 
 ## React-Redux framework
+Why React over Vue? 
+- Both great for small to big projects.
+- More familiar with React. (Main reason)
+- Good for SPA
 
 ### INSTRUCTIONS
 
@@ -15,3 +19,4 @@ Web application for filtering, searching and checking reviews.
 	* Edit in src files only
 	* To minify bundle.js for production, go to webpack.js in root file and set DEBUG === production & vice versa for development mode.
 	* Run "Webpack" in terminal to go into production mode
+5. Turn to "http://localhost:3000/" in your browser
