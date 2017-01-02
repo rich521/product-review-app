@@ -1,7 +1,6 @@
 # product-review-app
 Web application for filtering, searching and checking reviews.
 
-
 ## React-Redux framework
 
 ### INSTRUCTIONS
@@ -15,4 +14,4 @@ Web application for filtering, searching and checking reviews.
 	* Should start the server for live editing
 	* Edit in src files only
 	* To minify bundle.js for production, go to webpack.js in root file and set DEBUG === production & vice versa for development mode.
-	* Run Webpack in terminal to go into production mode
+	* Run "Webpack" in terminal to go into production mode
