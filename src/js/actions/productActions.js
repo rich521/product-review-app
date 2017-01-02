@@ -53,7 +53,7 @@ product duplicates so it can be show on the main page
 */
 
 let newArray = [];
-
+// Remove any duplicated.
 function handleDuplicates(arr) {
     for (let i = arr.length - 1; i >= 0; i--) {
         let name = arr[i].productName;
@@ -62,7 +62,7 @@ function handleDuplicates(arr) {
     return newArray;
 }
 
-// Custom indexOf
+// Custom indexOf for searching
 function indexOf(arg) {
     let arrLength = newArray.length;
     if (!arrLength) return true;

@@ -20,7 +20,8 @@ export default class ProductList extends React.Component {
     componentDidMount() {
         window.addEventListener('scroll', this.listener);
     }
-
+    
+    // Make sure to unbind event listeners from component
     componentWillUnmount() {
         window.removeEventListener('scroll', this.listener);
     }
@@ -45,6 +46,7 @@ export default class ProductList extends React.Component {
         }
     }
 
+    // Handle scroll to top function
     _handleScrollTop() {
         setTimeout(() => {
             document.body.scrollTop = document.body.scrollTop - 150;
@@ -58,8 +60,11 @@ export default class ProductList extends React.Component {
         const prodLen = searchProducts.length;
         const { searchInput } = this.refs;
 
+        // Load ajax gif loader first before props is updated
         let ProductList = <img class="gif" src="/img/ajax-loader.gif" alt="Loading!"/>,
             ShowButton = <button onClick={this._handleClick.bind(this)} class="btn">Show More</button>;
+
+        // Check if input if valid and if there is no results from searched query
         if (!prodLen && searchInput) {
             if (searchInput.value) {
                 ProductList = <div class="no-result">No results found matching "{searchInput.value}"</div>

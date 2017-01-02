@@ -1,5 +1,6 @@
 import React from "react";
 
+// Simple react compoment for rating
 export default (props) => {
     return (
 		<div class="stars">

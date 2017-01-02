@@ -1,7 +1,7 @@
 {
-  "name": "chat-web-app",
+  "name": "product-review-app",
   "version": "1.0.0",
-  "description": "Chat with people live using WebSocket",
+  "description": "List of product reviews to show",
   "main": "webpack.config.js",
   "dependencies": {
     "axios": "^0.15.2",

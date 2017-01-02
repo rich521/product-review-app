@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router";
 import Rating from "../components/Rating";
 
+// Show  products components
 export default (props) => {
     let limitTo = props.itemLimit;
 

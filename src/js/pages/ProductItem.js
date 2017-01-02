@@ -47,7 +47,7 @@ export default class ProductItem extends React.Component {
     }
 }
 
-//Unix time converter
+//Simple Custom Unix time converter
 function unixC(arg) {
     var t = new Date(arg * 1000),
         months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
