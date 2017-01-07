@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router";
 import { connect } from "react-redux";
-import { fetchItem } from "../actions/productActions";
+import { unixC } from "../actions/productActions";
 import Rating from "../components/Rating";
 
 @connect((store) => {
@@ -45,15 +45,4 @@ export default class ProductItem extends React.Component {
 	        </div>
         );
     }
-}
-
-//Simple Custom Unix time converter
-function unixC(arg) {
-    var t = new Date(arg * 1000),
-        months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-        year = t.getFullYear(),
-        month = months[t.getMonth()],
-        date = t.getDate(),
-        time = date + ' ' + month + ' ' + year;
-    return time;
 }
