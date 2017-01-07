@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router";
 import { connect } from "react-redux";
-import { unixC } from "../actions/productActions";
+import { _unixC } from "../actions/productActions";
 import Rating from "../components/Rating";
 
 @connect((store) => {
@@ -21,10 +21,10 @@ export default class ProductItem extends React.Component {
             <div class="item-container">
                 <div class="topNav">
                 	<Link to="/" class="btn">← Back</Link>
-	                <h2>"{name}" Reviews</h2>
+	                <h2>"{params.id}" Reviews</h2>
             	</div>
 	            {productsAll.map((item, i) => {
-	            	if (name === item.productName) {
+	            	if (name === item.productName.replace(/-/g, ".")) {
 	                return (
 	                    <article key={i} class="article">
 		                    <div class="side-bar">
@@ -36,7 +36,7 @@ export default class ProductItem extends React.Component {
 	                    	<div class="content">
 	                    		<h3>{item.title}</h3>
 	                    		<Rating rating={item.rating} />
-	                    		<div class="time">{unixC(item.timestamp)}</div>
+	                    		<div class="time">{_unixC(item.timestamp)}</div>
 	                    		<p>{item.comments}</p>
 	                    	</div>
 	                    </article>

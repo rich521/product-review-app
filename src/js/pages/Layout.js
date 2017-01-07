@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import * as productActions from "../actions/productActions";
+import { _fetchProducts } from "../actions/productActions";
 
 @connect((store) => {
     return {
@@ -10,7 +10,7 @@ import * as productActions from "../actions/productActions";
 
 export default class Layout extends React.Component {
     componentWillMount() {
-        this.props.dispatch(productActions.fetchProducts());
+        this.props.dispatch(_fetchProducts());
     }
 
     // Basic Layout, further customizable. Children prop react router

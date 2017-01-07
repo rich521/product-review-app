@@ -3,7 +3,7 @@ import axios from "axios";
 const productURL = "https://rawgit.com/richardstrutt/product-review-app/master/dist/data/products.json";
 
 // Fetch the products data
-export function fetchProducts() {
+export function _fetchProducts() {
     return (dispatch) => {
         dispatch({ type: "FETCHING_PRODUCTS" });
         axios.get(productURL)
@@ -45,6 +45,16 @@ export function _onIncreaseLimit(limit) {
     return (dispatch) => {
         dispatch({ type: "CHANGE_LIMIT", payload: incremented });
     }
+}
+
+export function _unixC(timeStamp) {
+    var t = new Date(timeStamp * 1000),
+        months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        year = t.getFullYear(),
+        month = months[t.getMonth()],
+        date = t.getDate(),
+        time = date + ' ' + month + ' ' + year;
+    return time;
 }
 
 /*

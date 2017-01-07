@@ -17,10 +17,15 @@ export default class ProductList extends React.Component {
         super();
         this.listener = this._handleScroll.bind(this);
     }
+
+    componentWillMount() {
+        this._onFilterChange({target: {value: ""}}, this.props.productsFiltered);
+    }
+
     componentDidMount() {
         window.addEventListener('scroll', this.listener);
     }
-    
+
     // Make sure to unbind event listeners from component
     componentWillUnmount() {
         window.removeEventListener('scroll', this.listener);
