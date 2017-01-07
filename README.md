@@ -6,6 +6,7 @@ Why React over Vue?
 - Both great for small to big projects.
 - More familiar with React. (Main reason)
 - Good for SPA
+- Widely used amoung develops. Easily adaptable.
 
 ### INSTRUCTIONS
 
