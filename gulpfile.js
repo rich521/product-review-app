@@ -24,7 +24,8 @@ gulp.task('default', function() {
             middleware: [
                 history({
                     verbose: true,
-                    disableDotRule: false
+                    htmlAcceptHeaders: ['text/html', 'application/xhtml+xml'],
+                    disableDotRule: true
                 })
             ],
         }
@@ -32,6 +33,8 @@ gulp.task('default', function() {
     gulp.watch('./src/js/**/*.js', ['js-watch']);
     gulp.watch(sassPath, ['sass']);
     gulp.watch("./dist/*.html").on('change', browserSync.reload);
+    // history.fallbackToIndexForUrlsWithDots(true);
+
 });
 
 gulp.task('public', function() {

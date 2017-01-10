@@ -13,8 +13,7 @@ import Rating from "../components/Rating";
 export default class ProductItem extends React.Component {
     render() {
         const { params, productsAll } = this.props;
-        // Fixes the dot bug
-        let name = params.id.replace(/-/g, ".");
+        let name = params.id;
         if (!productsAll.length) return <img class="gif" src="/img/ajax-loader.gif" alt="Loading!"/>;
 
         return (
@@ -24,7 +23,8 @@ export default class ProductItem extends React.Component {
 	                <h2>"{params.id}" Reviews</h2>
             	</div>
 	            {productsAll.map((item, i) => {
-	            	if (name === item.productName.replace(/-/g, ".")) {
+	            	if (name === item.productName) {
+	            	// if (name === item.productName.replace(/-/g, ".")) {
 	                return (
 	                    <article key={i} class="article">
 		                    <div class="side-bar">

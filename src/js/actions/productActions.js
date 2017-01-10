@@ -48,13 +48,7 @@ export function _onIncreaseLimit(limit) {
 }
 
 export function _unixC(timeStamp) {
-    var t = new Date(timeStamp * 1000),
-        months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-        year = t.getFullYear(),
-        month = months[t.getMonth()],
-        date = t.getDate(),
-        time = date + ' ' + month + ' ' + year;
-    return time;
+    return new Date(timeStamp).toDateString();
 }
 
 /*

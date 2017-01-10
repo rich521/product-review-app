@@ -10,8 +10,7 @@ export default (props) => {
         <div class="article-container">
             {props.searchProducts.map((item, i) => {
                 if (i < limitTo) {
-                    // Fixes the dot bug
-                    let name = item.productName.replace(/\./g, "-");
+                    let name = item.productName;
                     return (
                         <article key={i} class="article">
                             <h3>{i+1}. {item.productName}</h3>
